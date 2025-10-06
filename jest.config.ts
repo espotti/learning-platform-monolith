@@ -34,6 +34,8 @@ const config: Config = {
     'src/middleware/auth.middleware.ts',
     'src/utils/jwt-utils.ts',
     'src/utils/password-hasher.ts',
+    'src/controllers/auth.controller.ts',
+    'src/services/auth.service.ts',
     'src/services/certificates.service.ts',
     'src/controllers/certificates.controller.ts',
     'src/utils/validation.ts',
@@ -69,6 +71,12 @@ const config: Config = {
       functions: 90,
       lines: 90,
       statements: 90
+    },
+    'src/controllers/auth.controller.ts': {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100
     }
   },
   
