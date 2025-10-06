@@ -9,7 +9,7 @@ Use the terminal to run one task at the time until we finish all of the ones we 
 
 Use my Devin API KEY 
 
-apk_user_ZW1haWx8NjhjMDVlYTQzMWFiNTAwNjk0YTg3Mzg3X29yZy0zMDQ2YjlmMDIxZDc0ZTM4OGMzY2RlMjEwMTdiMzdiNzo5MTVjMDM0OTE0ZjQ0NTg3OGJlOGY0MWFlMWZlODkyNQ==
+
 
 To create new devin sessions using the md files that we have created
 
