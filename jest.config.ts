@@ -38,7 +38,9 @@ const config: Config = {
     'src/controllers/certificates.controller.ts',
     'src/utils/validation.ts',
     'src/services/enrollments.service.ts',
-    'src/services/progress.service.ts'
+    'src/services/progress.service.ts',
+    'src/controllers/users.controller.ts',
+    'src/routes/users.routes.ts'
   ],
   
   // Coverage thresholds - focused on auth components only
@@ -69,6 +71,12 @@ const config: Config = {
       functions: 90,
       lines: 90,
       statements: 90
+    },
+    'src/controllers/users.controller.ts': {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100
     }
   },
   
