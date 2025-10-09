@@ -733,3 +733,93 @@ export class CertificateValidator {
     };
   }
 }
+
+export class UserValidator {
+  static validateCreateUser(data: any): ValidationResult {
+    const errors: ValidationError[] = [];
+
+    if (!data.email || typeof data.email !== 'string') {
+      errors.push({ field: 'email', message: 'Email is required and must be a string' });
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(data.email)) {
+        errors.push({ field: 'email', message: 'Invalid email format' });
+      }
+    }
+
+    if (!data.name || typeof data.name !== 'string') {
+      errors.push({ field: 'name', message: 'Name is required and must be a string' });
+    } else if (data.name.trim().length === 0) {
+      errors.push({ field: 'name', message: 'Name cannot be empty' });
+    } else if (data.name.length > 255) {
+      errors.push({ field: 'name', message: 'Name must be 255 characters or less' });
+    }
+
+    if (!data.password || typeof data.password !== 'string') {
+      errors.push({ field: 'password', message: 'Password is required and must be a string' });
+    } else if (data.password.length < 6) {
+      errors.push({ field: 'password', message: 'Password must be at least 6 characters long' });
+    }
+
+    if (data.role !== undefined) {
+      if (!['admin', 'instructor', 'student'].includes(data.role)) {
+        errors.push({ 
+          field: 'role', 
+          message: 'Role must be one of: admin, instructor, student' 
+        });
+      }
+    }
+
+    return {
+      isValid: errors.length === 0,
+      errors
+    };
+  }
+
+  static validateUpdateUser(data: any): ValidationResult {
+    const errors: ValidationError[] = [];
+
+    if (data.email !== undefined) {
+      if (typeof data.email !== 'string') {
+        errors.push({ field: 'email', message: 'Email must be a string' });
+      } else {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+          errors.push({ field: 'email', message: 'Invalid email format' });
+        }
+      }
+    }
+
+    if (data.name !== undefined) {
+      if (typeof data.name !== 'string') {
+        errors.push({ field: 'name', message: 'Name must be a string' });
+      } else if (data.name.trim().length === 0) {
+        errors.push({ field: 'name', message: 'Name cannot be empty' });
+      } else if (data.name.length > 255) {
+        errors.push({ field: 'name', message: 'Name must be 255 characters or less' });
+      }
+    }
+
+    if (data.password !== undefined) {
+      if (typeof data.password !== 'string') {
+        errors.push({ field: 'password', message: 'Password must be a string' });
+      } else if (data.password.length < 6) {
+        errors.push({ field: 'password', message: 'Password must be at least 6 characters long' });
+      }
+    }
+
+    if (data.role !== undefined) {
+      if (!['admin', 'instructor', 'student'].includes(data.role)) {
+        errors.push({ 
+          field: 'role', 
+          message: 'Role must be one of: admin, instructor, student' 
+        });
+      }
+    }
+
+    return {
+      isValid: errors.length === 0,
+      errors
+    };
+  }
+}
